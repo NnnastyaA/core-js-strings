@@ -6,7 +6,7 @@
  ******************************************************************************************* */
 
 /**
- * Returns the length of the given string.
+ * Returns the length of the given string
  *
  * @param {string} value - The input string to calculate the length of.
  * @return {number} - The length of the string.
@@ -19,12 +19,15 @@
  *   getStringLength(null) => 0
  *   getStringLength(undefined) => 0
  */
-function getStringLength(/* value */) {
-  throw new Error('Not implemented');
+function getStringLength(value) {
+  if (value == null) {
+    return 0;
+  }
+  return value.length;
 }
 
 /**
- * Returns true if the value is a string, otherwise returns false.
+ * Returns true if the value is a string, otherwise returns false
  *
  * @param {string} value - The value to check if it's a string.
  * @return {boolean} - True if the value is a string, false otherwise.
@@ -37,12 +40,15 @@ function getStringLength(/* value */) {
  *   isString('test') => true
  *   isString(new String('test')) => true
  */
-function isString(/* value */) {
-  throw new Error('Not implemented');
+function isString(value) {
+  if (typeof value === 'string' || value instanceof String) {
+    return true;
+  }
+  return false;
 }
 
 /**
- * Returns the result of concatenation of two strings.
+ * Returns the result of concatenation of two strings
  *
  * @param {string} value1 - The first string to concatenate.
  * @param {string} value2 - The second string to concatenate.
@@ -53,12 +59,13 @@ function isString(/* value */) {
  *   concatenateStrings('aa', '') => 'aa'.
  *   concatenateStrings('', 'bb') => 'bb'
  */
-function concatenateStrings(/* value1, value2 */) {
-  throw new Error('Not implemented');
+function concatenateStrings(value1, value2) {
+  const value = value1.concat('', value2);
+  return value;
 }
 
 /**
- * Returns the first character of the given string.
+ * Returns the first character of the given string
  *
  * @param {string} value - The input string to extract the first character from.
  * @return {string} - The first character of the string.
@@ -68,12 +75,12 @@ function concatenateStrings(/* value1, value2 */) {
  *   getFirstChar('cat') => 'c'
  *   getFirstChar('') => ''
  */
-function getFirstChar(/* value */) {
-  throw new Error('Not implemented');
+function getFirstChar(string) {
+  return string.charAt(0);
 }
 
 /**
- * Removes leading and trailing whitespace characters from the string.
+ * Removes leading and trailing whitespace characters from the string
  *
  * @param {string} value - The input string to remove leading and trailing whitespaces from.
  * @return {string} - The string with leading and trailing whitespaces removed.
@@ -83,12 +90,12 @@ function getFirstChar(/* value */) {
  *   removeLeadingAndTrailingWhitespaces('cat ') => 'cat'
  *   removeLeadingAndTrailingWhitespaces('\t\t\tHello, World! ') => 'Hello, World!'
  */
-function removeLeadingAndTrailingWhitespaces(/* value */) {
-  throw new Error('Not implemented');
+function removeLeadingAndTrailingWhitespaces(string) {
+  return string.trim('value');
 }
 
 /**
- * Removes only leading whitespace characters from the string.
+ * Removes only leading whitespace characters from the string
  *
  * @param {string} value - The input string to remove leading whitespaces from.
  * @return {string} - The string with leading whitespaces removed.
@@ -98,12 +105,12 @@ function removeLeadingAndTrailingWhitespaces(/* value */) {
  *   removeLeadingWhitespaces('cat ') => 'cat '
  *   removeLeadingWhitespaces('\t\t\tHello, World! ') => 'Hello, World! '
  */
-function removeLeadingWhitespaces(/* value */) {
-  throw new Error('Not implemented');
+function removeLeadingWhitespaces(string) {
+  return string.trimStart('value');
 }
 
 /**
- * Removes only trailing whitespace characters from the string.
+ * Removes only trailing whitespace characters from the string
  *
  * @param {string} value - The input string to remove trailing whitespaces from.
  * @return {string} - The string with trailing whitespaces removed.
@@ -113,12 +120,12 @@ function removeLeadingWhitespaces(/* value */) {
  *   removeTrailingWhitespaces('cat ') => 'cat'
  *   removeTrailingWhitespaces('\t\t\tHello, World! ') => '\t\t\tHello, World!'
  */
-function removeTrailingWhitespaces(/* value */) {
-  throw new Error('Not implemented');
+function removeTrailingWhitespaces(string) {
+  return string.trimEnd('value');
 }
 
 /**
- * Returns a string that is repeated the specified number of times.
+ * Returns a string that is repeated the specified number of times
  *
  * @param {string} str - The string to repeat.
  * @param {number} times - The number of times to repeat the string.
@@ -130,12 +137,17 @@ function removeTrailingWhitespaces(/* value */) {
  *   repeatString('', 3) => ''
  *   repeatString('abc', -2) => ''
  */
-function repeatString(/* str, times */) {
-  throw new Error('Not implemented');
+function repeatString(str, times) {
+  const emptyLine = '';
+  if (times > 0) {
+    const RepeatString = str.repeat(times);
+    return RepeatString;
+  }
+  return emptyLine;
 }
 
 /**
- * Remove the first occurrence of a substring from a string.
+ * Remove the first occurrence of a substring from a string
  *
  * @param {string} str - The input string.
  * @param {string} value - The substring to remove from the string.
@@ -146,12 +158,19 @@ function repeatString(/* str, times */) {
  *   removeFirstOccurrences('I like legends', 'end') => 'I like legs'.
  *   removeFirstOccurrences('ABABAB', 'BA') => 'ABAB'.
  */
-function removeFirstOccurrences(/* str, value */) {
-  throw new Error('Not implemented');
+function removeFirstOccurrences(str, value) {
+  const indexLine = str.indexOf(value);
+
+  if (indexLine === -1) {
+    return str;
+  }
+
+  const newLine = str.slice(0, indexLine) + str.slice(indexLine + value.length);
+  return newLine;
 }
 
 /**
- * Remove the last occurrence of a substring from a string.
+ * Remove the last occurrence of a substring from a string
  *
  * @param {string} str - The input string.
  * @param {string} value - The substring to remove from the string.
@@ -162,12 +181,20 @@ function removeFirstOccurrences(/* str, value */) {
  *   removeLastOccurrences('I like legends', 'end') => 'I like legs'.
  *   removeLastOccurrences('ABABAB', 'BA') => 'ABAB'.
  */
-function removeLastOccurrences(/* str, value */) {
-  throw new Error('Not implemented');
+function removeLastOccurrences(str, value) {
+  const lastIndexLine = str.lastIndexOf(value);
+
+  if (lastIndexLine === -1) {
+    return str;
+  }
+  const newLine =
+    str.slice(0, lastIndexLine) + str.slice(lastIndexLine + value.length);
+
+  return newLine;
 }
 
 /**
- * Calculate the sum of character codes of the given string.
+ * Calculate the sum of character codes of the given string
  *
  * @param {string} str - The input string.
  * @return {number} - The sum of character codes of the string.
@@ -178,12 +205,20 @@ function removeLastOccurrences(/* str, value */) {
  *   sumOfCodes('') => 0
  *   sumOfCodes() => 0
  */
-function sumOfCodes(/* str */) {
-  throw new Error('Not implemented');
+function sumOfCodes(str) {
+  let sumLetter = 0;
+  if (str === null || str === undefined || str.length === 0) {
+    return 0;
+  }
+  for (let i = 0; i < str.length; i += 1) {
+    const lettersCode = str.charCodeAt(i);
+    sumLetter += lettersCode;
+  }
+  return sumLetter;
 }
 
 /**
- * Checks if a string starts with a specific substring.
+ * Checks if a string starts with a specific substring
  *
  * @param {string} str - The input string.
  * @param {string} substr - The substring to check.
@@ -198,7 +233,7 @@ function startsWith(/* str, substr */) {
 }
 
 /**
- * Checks if a string ends with a specific substring.
+ * Checks if a string ends with a specific substring
  *
  * @param {string} str - The input string.
  * @param {string} substr - The substring to check.
@@ -213,7 +248,7 @@ function endsWith(/* str, substr */) {
 }
 
 /**
- * Returns a time string in the "mm:ss" format.
+ * Returns a time string in the "mm:ss" format
  *
  * @param {number} minutes - The number of minutes (non-negative integer).
  * @param {number} seconds - The number of seconds (non-negative integer).
@@ -230,7 +265,7 @@ function formatTime(/* minutes, seconds */) {
 }
 
 /**
- * Returns a string in reverse order.
+ * Returns a string in reverse order
  *
  * @param {string} str - The input string.
  * @return {string} - The string in reverse order.
@@ -244,7 +279,7 @@ function reverseString(/* str */) {
 }
 
 /**
- * Returns a string with characters in alphabetical order.
+ * Returns a string with characters in alphabetical order
  *
  * @param {string} str - The input string.
  * @return {string} - The string in alphabetical order.
@@ -259,7 +294,7 @@ function orderAlphabetically(/* str */) {
 }
 
 /**
- * Checks if a given string contains a specified substring.
+ * Checks if a given string contains a specified substring
  *
  * @param {string} str - The input string to search within.
  * @param {string} substring - The substring to check for in the input string.
@@ -275,7 +310,7 @@ function containsSubstring(/* str, substring */) {
 }
 
 /**
- * Returns the number of vowels in the string.
+ * Returns the number of vowels in the string
  * Vowels: 'a', 'e', 'i', 'o', 'u', 'y', 'A', 'E', 'I', 'O', 'U', 'Y'.
  *
  * @param {string} str - The input string.
@@ -293,7 +328,7 @@ function countVowels(/* str */) {
 }
 
 /**
- * Returns true if the string is a palindrome; otherwise false.
+ * Returns true if the string is a palindrome; otherwise false
  * https://en.wikipedia.org/wiki/Palindrome
  *
  * @param {string} str - The input string.
@@ -326,7 +361,7 @@ function findLongestWord(/* sentence */) {
 }
 
 /**
- * Returns the string where each word is reversed.
+ * Returns the string where each word is reversed
  *
  * @param {string} str - The input string.
  * @return {string} - The string where each word is reversed.
@@ -340,7 +375,7 @@ function reverseWords(/* str */) {
 }
 
 /**
- * Inverts the case of each character in the given string.
+ * Inverts the case of each character in the given string
  *
  * @param {string} str - The input string.
  * @returns {string} - The string with the case of each character inverted.
@@ -372,7 +407,7 @@ function getStringFromTemplate(/* firstName, lastName */) {
 }
 
 /**
- * Extracts a name from template string 'Hello, First_Name Last_Name!'.
+ * Extracts a name from template string 'Hello, First_Name Last_Name!'
  *
  * @param {string} value - The input value.
  * @return {string} - The name extracted from the template.
@@ -396,8 +431,9 @@ function extractNameFromTemplate(/* value */) {
  *   unbracketTag('<span>') => 'span'
  *   unbracketTag('<a>') => 'a'
  */
-function unbracketTag(/* str */) {
-  throw new Error('Not implemented');
+function unbracketTag(str) {
+  const stringWithoutBrackets = str.substring(1, str.length - 1);
+  return stringWithoutBrackets;
 }
 
 /**
