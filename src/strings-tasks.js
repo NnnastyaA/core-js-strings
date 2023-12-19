@@ -343,8 +343,15 @@ function countVowels(str) {
  *   isPalindrome('apple') => false
  *   isPalindrome('No lemon, no melon') => true
  */
-function isPalindrome(/* str */) {
-  throw new Error('Not implemented');
+function isPalindrome(str) {
+  const lowerCasestr = str.toLowerCase();
+  const stringReplace = lowerCasestr.replace(/[^a-z0-9]/g, '');
+  const newStr = stringReplace.split('');
+  const revString = newStr.reverse().join('').toString();
+  if (revString === stringReplace) {
+    return true;
+  }
+  return false;
 }
 
 /**
@@ -359,8 +366,17 @@ function isPalindrome(/* str */) {
  *   findLongestWord('A long and winding road') => 'winding'
  *   findLongestWord('No words here') => 'words'
  */
-function findLongestWord(/* sentence */) {
-  throw new Error('Not implemented');
+function findLongestWord(sentence) {
+  const sentenceSplit = sentence.split(' ');
+  let wordLongest = '';
+
+  for (let i = 0; i < sentenceSplit.length; i += 1) {
+    if (sentenceSplit[i].length > wordLongest.length) {
+      wordLongest = sentenceSplit[i];
+    }
+  }
+
+  return wordLongest;
 }
 
 /**
@@ -373,8 +389,14 @@ function findLongestWord(/* sentence */) {
  *   reverseWords('Hello World') => 'olleH dlroW'
  *   reverseWords('The Quick Brown Fox') => 'ehT kciuQ nworB xoF'
  */
-function reverseWords(/* str */) {
-  throw new Error('Not implemented');
+function reverseWords(str) {
+  const strSplit = str.split(' ');
+
+  for (let i = 0; i < strSplit.length; i += 1) {
+    strSplit[i] = strSplit[i].split('').reverse().join('');
+  }
+
+  return strSplit.join(' ');
 }
 
 /**
@@ -388,8 +410,19 @@ function reverseWords(/* str */) {
  *   invertCase('JavaScript is Fun') => 'jAVAsCRIPT IS fUN'
  *   invertCase('12345') => '12345'
  */
-function invertCase(/* str */) {
-  throw new Error('Not implemented');
+function invertCase(str) {
+  const stringSplit = str.split('');
+  let newString = '';
+
+  for (let i = 0; i < stringSplit.length; i += 1) {
+    if (stringSplit[i] === stringSplit[i].toUpperCase()) {
+      newString += stringSplit[i].toLowerCase();
+    } else {
+      newString += stringSplit[i].toUpperCase();
+    }
+  }
+
+  return newString;
 }
 
 /**
@@ -405,8 +438,8 @@ function invertCase(/* str */) {
  *   getStringFromTemplate('John','Doe') => 'Hello, John Doe!'
  *   getStringFromTemplate('Chuck','Norris') => 'Hello, Chuck Norris!'
  */
-function getStringFromTemplate(/* firstName, lastName */) {
-  throw new Error('Not implemented');
+function getStringFromTemplate(firstName, lastName) {
+  return `Hello, ${firstName} ${lastName}!`;
 }
 
 /**
